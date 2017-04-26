@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
     const apiKey = "";
-    $("#output").hide();
-    $("#address").hide();
+    // $("#output").hide();
+    // $("#address").hide();
 
 
 
@@ -10,8 +10,8 @@ $(document).ready(function() {
         console.log("e.target.innerHTML",e.target.innerHTML);
         loadPlaces(e.target.innerHTML).then((results) =>{
         	// console.log("data",data);
-        	$("#output").text("");
-        	$("#address").text("");
+        	// $("#output").text("");
+        	// $("#address").text("");
         	WritePlaceToDom(results);
         }).catch((error) => {
         	console.log(error);
@@ -21,7 +21,7 @@ $(document).ready(function() {
     $("body").on("click",".place",(e) => {
     	console.log("e.target.id",e.target.id);
     	$("#address").text("");
-    	let place_id = e.target.id
+    	let place_id = e.target.id;
     	loadDetails(place_id).then((result) => {
     		console.log(result.formatted_address);
     		writeAddressToDOM(result.formatted_address);
@@ -49,17 +49,17 @@ $(document).ready(function() {
     	$("#address").show();
     	let outputString = `<div> ${address}</div>`;
     	$("#address").append(outputString);
-    } 
+    }; 
 
 
     const WritePlaceToDom = (results) => {
     	let outputString = "";
-    		$("#output").show();
+    		// $("#output").show();
     	for (i=0 ;i< results.length ;i++){
     		outputString += `<a href="#"><div id='${results[i].place_id}' class="place"> ${results[i].name}</div></a>`;
     	}	
-    	$("#output").html(outputString);
-    }
+    	$("#input").html(outputString);
+    };
 
 
 
